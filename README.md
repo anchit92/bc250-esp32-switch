@@ -82,8 +82,7 @@ ground. The ESP pulses GPIO7 LOW for 200 ms (open-drain) to simulate pressing a 
 power button, triggering a graceful ACPI shutdown through the OS.
 
 To locate the pads: flip the BC250 over and find the grid of small solder pads near the
-edge — these are the front-panel header points (power, reset, LED). The power button pair
-is typically the topmost or leftmost pair in the group. See the
+edge — see the
 [BC250 PSU adapter wiring diagram](https://github.com/mosfetparty/bc250-psu-adapter/blob/2e8af98586867503f02431941fe0897930b185ee/FSP500-30AS%20%E2%80%94%20Plug-n-Play%20Edition/Wiring%20Diagram/FSP500%20PnP%20-%20BC250%20PSU%20Adapter.pdf)
 by mosfetparty for help identifying and soldering to these pads.
 
