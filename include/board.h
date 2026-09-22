@@ -10,7 +10,7 @@
 //   GPIO6  (BUTTON_GND)    <-----> momentary switch terminal B
 //   GPIO4  (PS_ON_PIN)     <-----> ATX PS_ON# (green wire, active LOW)
 //   GPIO3  (BOARD_SENSE)   <----> BC250 TPMS1 pin 9 (3.3V = board on)
-//   GPIO7  (MOBO_PWR_PIN)  <----> motherboard front-panel PWR_SW header
+//   GPIO7  (MOBO_PWR_PIN)  <----> motherboard power button pads
 //
 // The switch bridges GPIO5 and GPIO6. GPIO6 is driven LOW to act as a local
 // ground, and GPIO5 is read with an internal pull-up: pressed reads LOW.
@@ -23,9 +23,9 @@ const int BUTTON_GND   = 6;
 //   HIGH -> high-impedance -> PSU pull-up wins -> PSU off
 const int PS_ON_PIN = 4;
 
-// Motherboard front-panel power button header. Open-drain like PS_ON#: pulsing
+// Motherboard power button pads. Open-drain like PS_ON#: pulsing
 // LOW momentarily simulates pressing the case power button, letting the OS do
-// a graceful ACPI shutdown. Idles high-Z so the header floats normally.
+// a graceful ACPI shutdown. Idles high-Z.
 const int MOBO_PWR_PIN = 7;
 
 // BC250 TPMS1 (pin 9): reads ~3.3V while the board is powered/booted, 0 when
@@ -65,8 +65,8 @@ const unsigned long DEBOUNCE_MS = 30;
 // cutoff). A short press sends a graceful ACPI pulse first; this is the backup.
 const unsigned long LONG_PRESS_MS = 5000;
 
-// Duration of the momentary pulse sent to the motherboard's PWR_SW header to
-// simulate a front-panel button press (graceful ACPI shutdown).
+// Duration of the momentary pulse sent to the motherboard's power button pads
+// to simulate a power button press (graceful ACPI shutdown).
 const unsigned long MOBO_PWR_PULSE_MS = 200;
 
 // Hold the button this long while OFF to enter WiFi setup mode (reconfigure the
